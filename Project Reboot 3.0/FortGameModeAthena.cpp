@@ -304,10 +304,10 @@ void AFortGameModeAthena::OnAircraftEnteredDropZoneHook(AFortGameModeAthena* Gam
 void SetupEverythingAI() // find better name lol
 {
 	PlayerBot::InitializeBotClasses();
-	// SetupAIGoalManager();
-	// SetupAIDirector();
+	SetupAIGoalManager();
+	SetupAIDirector();
 	SetupServerBotManager();
-	// SetupNavConfig(UKismetStringLibrary::Conv_StringToName(L"MANG"));
+	//SetupNavConfig(UKismetStringLibrary::Conv_StringToName(L"MANG"));
 }
 
 bool AFortGameModeAthena::Athena_ReadyToStartMatchHook(AFortGameModeAthena* GameMode)
@@ -933,10 +933,12 @@ bool AFortGameModeAthena::Athena_ReadyToStartMatchHook(AFortGameModeAthena* Game
 
 		AllRebootVans.Free();
 
+		/*
 		if (AmountOfBotsToSpawn != 0)
 		{
 			Bots::SpawnBotsAtPlayerStarts(AmountOfBotsToSpawn);
 		}
+		*/
 
 		if (std::floor(Fortnite_Version) == 5)
 		{

@@ -347,7 +347,7 @@ namespace Bots
 
 	static void SpawnBotsAtPlayerStarts(int AmountOfBots)
 	{
-		return;
+		//return;
 
 		auto GameState = Cast<AFortGameStateAthena>(GetWorld()->GetGameState());
 		auto GameMode = Cast<AFortGameModeAthena>(GetWorld()->GetGameMode());
@@ -416,13 +416,14 @@ namespace Bots
 
 			if (GameState->GetGamePhase() == EAthenaGamePhase::Warmup)
 			{
-				/* if (!CurrentPlayer->IsPlayingEmote())
+				auto PlayerAsAthena = (AFortPlayerControllerAthena*)CurrentPlayer;
+				if (!PlayerAsAthena->IsPlayingEmote())
 				{
 					static auto AthenaDanceItemDefinitionClass = FindObject<UClass>("/Script/FortniteGame.AthenaDanceItemDefinition");
 					auto RandomDanceID = GetRandomObjectOfClass(AthenaDanceItemDefinitionClass);
 
-					CurrentPlayer->ServerPlayEmoteItemHook(CurrentPlayer, RandomDanceID);
-				} */
+					PlayerAsAthena->ServerPlayEmoteItemHook(PlayerAsAthena, RandomDanceID);
+				}
 			}	
 
 			if (PlayerBot.bIsAthenaController && CurrentPlayerState->IsInAircraft() && !CurrentPlayerState->HasThankedBusDriver())
